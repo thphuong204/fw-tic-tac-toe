@@ -74,6 +74,17 @@ function Game() {
     setXIsNext(step % 2 === 0);
   };
 
+  //Restart game
+  const handlRestart = () => {
+    setStepNumber(0);
+    setHistory([
+      {
+        squares: Array(9).fill(null),
+      },
+    ]);
+    setXIsNext(true);
+  };
+
   return (
     <div className="main">
       <h2 className="result">Winner is: {winner ? winner : "N/N"}</h2>
@@ -85,6 +96,9 @@ function Game() {
         />
         <History history={history} jumpTo={jumpTo} />
       </div>
+      <button onClick={handlRestart} className="restart-btn">
+        Restart
+      </button>
     </div>
   );
 }
